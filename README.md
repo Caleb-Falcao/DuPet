@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🐾 DuPet – Gerenciador de Pets e Clínicas
 
 DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem seus pets, visualizarem suas informações e encontrarem clínicas veterinárias próximas.
@@ -37,3 +38,6 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 ```bash
 git clone https://github.com/seuusuario/dupet.git
 cd dupet
+=======
+# projeto_DuPet
+>>>>>>> d2f08d8d1d08f7fcbf498df87839cf24f5ca9485
