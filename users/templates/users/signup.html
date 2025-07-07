@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="description" content="Página de cadastro de usuário do sistema DuPet.">
+    <meta name="keywords" content="cadastro, pets, dupet, autenticação, sistema de pets">
+    <meta charset="UTF-8">
+    <title>Cadastro - DuPet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 font-sans">
+  <div class="flex h-screen">
+    <!-- Lado esquerdo com imagem -->
+    <div class="w-1/2 bg-pink-100 flex items-center justify-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616554.png" alt="Cadastro Illustration" class="w-3/4 max-w-md">
+    </div>
+
+    <!-- Lado direito com formulário -->
+    <div class="w-1/2 flex items-center justify-center bg-white">
+      <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+
+        <h1 class="text-2xl font-bold mb-2 text-gray-800">Crie sua conta no DuPet 🐾</h1>
+        <p class="mb-6 text-gray-600">Cadastre-se para gerenciar seus pets com facilidade.</p>
+
+        <form method="post" class="space-y-4">
+          {% csrf_token %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="text-red-600 text-sm">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+
+          <input type="text" name="username" placeholder="Nome de usuário" required class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400">
+
+          <input type="password" name="password1" placeholder="Senha" required class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400">
+
+          <input type="password" name="password2" placeholder="Confirme a senha" required class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400">
+
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600 transition">Cadastrar</button>
+        </form>
+
+        <p class="mt-4 text-sm text-center">Já tem uma conta? <a href="{% url 'login' %}" class="text-pink-500 hover:underline">Entrar</a></p>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

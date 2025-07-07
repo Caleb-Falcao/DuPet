@@ -1,0 +1,11 @@
+<h1>Meus Pets</h1>
+<a href="{% url 'pet_create'%}">➕ Adicionar Pet</a>
+<ul>
+    {% for pet in pets %}
+        <li>
+            <strong>{{ pet.nome }}</strong> - {{ pet.especie }}{% if pet.raca %} ({{ pet.raca }}){% endif %}
+        </li>
+    {% empty %}
+        <li>Você ainda não cadastrou nenhum pet.</li>
+    {% endfor %}
+</ul>
