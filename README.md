@@ -1,6 +1,8 @@
 <<<<<<< HEAD
 # 🐾 DuPet – Gerenciador de Pets e Clínicas
 
+![License](https://img.shields.io/badge/license-Proprietary-red)
+
 DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem seus pets, visualizarem suas informações e encontrarem clínicas veterinárias próximas.
 
 ---
