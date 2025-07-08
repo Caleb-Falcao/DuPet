@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}DuPet{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            duverde: '#16A34A',   // Verde principal
+            duazul: '#E0F2F1',     // Terceira cor suave (verde-água)
+            dufundo: '#F8FAFC'     // Fundo geral (azulado-claro)
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Ícone da aba -->
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+</head>
+<body class="bg-dufundo text-gray-800 min-h-screen flex flex-col">
+
+  <!-- 🧽 NAVBAR -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-3xl font-extrabold text-duverde">DuPet</a>
+      <nav class="space-x-4 text-sm">
+        <a href="/" class="text-gray-700 hover:text-duverde font-medium">Início</a>
+        <a href="/pets/" class="text-gray-700 hover:text-duverde font-medium">Pets</a>
+        <a href="/clinics/" class="text-gray-700 hover:text-duverde font-medium">Clínicas</a>
+        {% if user.is_authenticated %}
+          <span class="text-gray-600">Olá, <strong>{{ user.username }}</strong>!</span>
+          <a href="{% url 'logout' %}" class="text-red-500 hover:underline">Sair</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="text-duverde hover:underline">Login</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- 📄 CONTEÚDO PRINCIPAL -->
+  <main class="flex-1 container mx-auto px-4 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- 📦 RODAPÉ -->
+  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+    &copy; {{ now|date:"Y" }} DuPet. Feito com ❤ por Caleb Falcão.
+  </footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

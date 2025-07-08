@@ -1,0 +1,10 @@
+{% block content %}
+<h2>Nova Clínica</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'clinic_list' %}">Voltar para a lista</a>
+{% endblock %}

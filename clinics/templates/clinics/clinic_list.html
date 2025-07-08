@@ -1,18 +1,53 @@
-<!-- templates/clinics/clinic_list.html -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Clínicas Veterinárias</title>
-</head>
-<body>
-    <h1>Clínicas Próximas</h1>
-    <ul>
+{% extends 'global/base.html' %}
+{% load static %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-6">
+  <h1 class="text-3xl font-bold text-green-700 mb-4">🏥 Clínicas Veterinárias</h1>
+
+  <!-- Clínicas Próximas -->
+  <section class="mb-10">
+    <div class="flex justify-between items-center">
+      <h2 class="text-xl font-semibold text-gray-800">📍 Clínicas Próximas</h2>
+      <button onclick="buscarClinicasGoogle()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+        Localizar
+      </button>
+    </div>
+    <p class="text-sm text-gray-500 mb-2">Baseado na sua localização atual (Google Maps)</p>
+
+    <div id="google-clinics" class="grid md:grid-cols-2 gap-4 mt-4">
+      <!-- Preenchido via JS -->
+    </div>
+  </section>
+
+  <hr class="my-8 border-gray-300">
+
+  <!-- Clínicas Cadastradas Manualmente -->
+  <section class="mb-6">
+    <div class="flex justify-between items-center mb-2">
+      <h2 class="text-xl font-semibold text-gray-800">🏥 Clínicas Parceiras DuPet</h2>
+      <a href="{% url 'clinic_add' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+        + Nova Clínica
+      </a>
+    </div>
+
+    {% if clinics %}
+      <ul class="grid md:grid-cols-2 gap-4 mt-4">
         {% for clinic in clinics %}
-            <li><strong>{{ clinic.nome }}</strong> - {{ clinic.endereco }}</li>
-        {% empty %}
-            <li>Nenhuma clínica encontrada.</li>
+        <li class="p-4 border rounded-lg shadow bg-white hover:shadow-md transition">
+          <h3 class="text-lg font-bold text-green-700">{{ clinic.nome }}</h3>
+          <p class="text-sm text-gray-600">{{ clinic.endereco }}</p>
+          <p class="text-sm text-gray-500">{{ clinic.cidade }} • {{ clinic.telefone }}</p>
+        </li>
         {% endfor %}
-    </ul>
-</body>
-</html>
+      </ul>
+    {% else %}
+      <p class="text-gray-500 mt-2">Nenhuma clínica cadastrada ainda.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<!-- Google Maps API + Script -->
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places&loading=async" async></script>
+  <script src="{% static 'js/clinics.js' %}"></script>
+{% endblock %}
