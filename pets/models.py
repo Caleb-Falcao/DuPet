@@ -5,7 +5,7 @@ class Pet(models.Model):
     ESPECIE_CHOICES = [
         ('cachorro', 'Cachorro'),
         ('gato', 'Gato'),
-        ('passaro', 'Pássaro'),
+        ('passaro', 'Ave'),
         ('roedor', 'Roedor'),
         ('outro', 'Outro'),        
     ]
@@ -16,7 +16,7 @@ class Pet(models.Model):
     raca = models.CharField(max_length=100, blank=True)
     data_nascimento = models.DateField(null=True,blank=True)
     peso = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-    foto = models.ImageField(upload_to='pets_fotos/',null=True, blank=True)
+    foto = models.ImageField(upload_to='pets/',null=True, blank=True)
     observacoes = models.TextField(blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
 

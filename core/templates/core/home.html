@@ -1,0 +1,52 @@
+{% extends 'global/base.html' %}
+{% load static %}
+{% block title %}Início - DuPet{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-white rounded-2xl shadow-md p-8 flex flex-col md:flex-row items-center gap-8">
+  <!-- Texto -->
+  <div class="flex-1">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-duverde leading-tight">
+      Cuide do seu Pet com Facilidade
+    </h1>
+    <p class="mt-4 text-lg text-gray-600">
+      No DuPet, você encontra clínicas, gerencia seus pets e garante que eles recebam o melhor cuidado possível.
+    </p>
+    <div class="mt-6 flex gap-4">
+      <a href="{% url 'pets:pet_list' %}" class="bg-duverde hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow">
+        Meus Pets
+      </a>
+      <a href="{% url 'clinics:clinic_list' %}" class="bg-duazul hover:bg-green-200 text-duverde px-6 py-3 rounded-lg shadow">
+        Encontrar Clínica
+      </a>
+    </div>
+  </div>
+  <!-- Imagem -->
+  <div class="flex-1">
+    <img src="{% static 'images/home-pet.jpg' %}" alt="Cuidando do pet" class="w-full max-w-sm mx-auto">
+  </div>
+</section>
+
+<!-- Seção de Recursos -->
+<section class="mt-12 grid gap-8 md:grid-cols-3">
+  <!-- Card -->
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+    <img src="{% static 'icons/pet.svg' %}" class="w-16 h-16 mx-auto mb-4" alt="">
+    <h3 class="text-lg font-semibold text-duverde">Cadastro de Pets</h3>
+    <p class="text-gray-500 mt-2">Mantenha informações atualizadas sobre saúde, vacinas e mais.</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+    <img src="{% static 'icons/clinic.svg' %}" class="w-16 h-16 mx-auto mb-4" alt="">
+    <h3 class="text-lg font-semibold text-duverde">Busca de Clínicas</h3>
+    <p class="text-gray-500 mt-2">Encontre veterinários próximos com base na sua localização.</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+    <img src="{% static 'icons/heart.svg' %}" class="w-16 h-16 mx-auto mb-4" alt="">
+    <h3 class="text-lg font-semibold text-duverde">Cuidados Personalizados</h3>
+    <p class="text-gray-500 mt-2">Receba dicas e alertas para manter seu pet saudável e feliz.</p>
+  </div>
+</section>
+{% endblock %}

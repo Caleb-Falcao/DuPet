@@ -12,7 +12,7 @@ def login_view(request):
         
         if user is not None:
             login(request,user)
-            return redirect('pet_list') #redireciona para a lista de pets
+            return redirect('home') #redireciona para a tela de inicio
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
     return render(request, 'users/login.html')
