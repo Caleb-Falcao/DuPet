@@ -38,7 +38,7 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/Caleb-Falcao/projeto_DuPet
+git clone https://github.com/Caleb-Falcao/DuPet.git
 cd dupet
 python -m venv venv
 pip install -r .\requirements.txt
