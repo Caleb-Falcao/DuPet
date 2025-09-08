@@ -30,7 +30,7 @@ def signup_view(request):
         else:
             user = User.objects.create_user(username=username, password=password1)
             login(request, user)
-            return redirect('pet_list')
+            return redirect('home')
         
     return render(request, 'users/signup.html')
 
