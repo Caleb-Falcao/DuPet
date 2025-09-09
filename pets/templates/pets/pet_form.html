@@ -8,7 +8,7 @@
   <form method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded-lg p-6 space-y-4">
     {% csrf_token %}
 
-    <!-- Nome do Pet -->
+    <!-- Nome -->
     <div>
       <label for="id_nome" class="block text-gray-700 font-semibold mb-1">Nome</label>
       <input type="text" name="nome" id="id_nome" value="{{ form.nome.value|default_if_none:'' }}"
@@ -16,6 +16,57 @@
         placeholder="Digite o nome do seu pet">
       {% if form.nome.errors %}
         <p class="text-red-500 text-sm mt-1">{{ form.nome.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Sexo -->
+    <div>
+      <label for="id_sexo" class="block text-gray-700 font-semibold mb-1">Sexo</label>
+      <select name="sexo" id="id_sexo"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde">
+        {% for value, label in form.sexo.field.choices %}
+          <option value="{{ value }}" {% if form.sexo.value == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      {% if form.sexo.errors %}
+        <p class="text-red-500 text-sm mt-1">{{ form.sexo.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Cor -->
+    <div>
+      <label for="id_cor" class="block text-gray-700 font-semibold mb-1">Cor</label>
+      <input type="text" name="cor" id="id_cor" value="{{ form.cor.value|default_if_none:'' }}"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde"
+        placeholder="Ex: Preto, Branco, Caramelo">
+      {% if form.cor.errors %}
+        <p class="text-red-500 text-sm mt-1">{{ form.cor.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Porte -->
+    <div>
+      <label for="id_porte" class="block text-gray-700 font-semibold mb-1">Porte</label>
+      <select name="porte" id="id_porte"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde">
+        <option value="">---------</option>
+        {% for value, label in form.porte.field.choices %}
+          <option value="{{ value }}" {% if form.porte.value == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      {% if form.porte.errors %}
+        <p class="text-red-500 text-sm mt-1">{{ form.porte.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Microchip -->
+    <div>
+      <label for="id_microchip" class="block text-gray-700 font-semibold mb-1">Microchip</label>
+      <input type="text" name="microchip" id="id_microchip" value="{{ form.microchip.value|default_if_none:'' }}"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde"
+        placeholder="Número do microchip (se houver)">
+      {% if form.microchip.errors %}
+        <p class="text-red-500 text-sm mt-1">{{ form.microchip.errors.0 }}</p>
       {% endif %}
     </div>
 
@@ -35,7 +86,7 @@
 
     <!-- Raça -->
     <div>
-      <label for="id_raca" class="block text-gray-700 font-semibold mb-1">Raça (opcional)</label>
+      <label for="id_raca" class="block text-gray-700 font-semibold mb-1">Raça</label>
       <input type="text" name="raca" id="id_raca" value="{{ form.raca.value|default_if_none:'' }}"
         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde"
         placeholder="Ex: Labrador, Siamês">
@@ -67,7 +118,7 @@
 
     <!-- Foto -->
     <div>
-      <label for="id_foto" class="block text-gray-700 font-semibold mb-1">Foto (opcional)</label>
+      <label for="id_foto" class="block text-gray-700 font-semibold mb-1">Foto</label>
       <input type="file" name="foto" id="id_foto"
         class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-duverde">
       {% if form.foto.errors %}
@@ -86,7 +137,7 @@
       {% endif %}
     </div>
 
-    <!-- Botão Enviar -->
+    <!-- Botão -->
     <div class="flex justify-end">
       <button type="submit"
         class="bg-duverde hover:bg-green-700 text-white font-semibold px-6 py-2 rounded shadow transition">

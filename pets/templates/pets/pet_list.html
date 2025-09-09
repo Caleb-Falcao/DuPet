@@ -49,6 +49,9 @@
 
           <!-- Ações -->
           <div class="mt-4 flex gap-2 p-4">
+            <a href="{% url 'pets:pet_detail' pet.id %}" class="flex-1 bg-duverde text-white hover:bg-green-700 text-center py-2 rounded-lg shadow-sm transition">
+              📄 Detalhes
+            </a>
             <a href="{% url 'pets:pet_edit' pet.id %}" class="flex-1 bg-duazul text-duverde hover:bg-green-100 text-center py-2 rounded-lg shadow-sm transition">
               ✏️ Editar
             </a>

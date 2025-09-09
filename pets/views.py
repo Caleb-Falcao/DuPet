@@ -48,3 +48,7 @@ def pet_delete(request, pk):
         pet.delete()
         return redirect('pets:pet_list')
     return render(request, 'pets/pet_confirm_delete.html', {'pet': pet})
+
+def pet_detail(request, pet_id):
+    pet = get_object_or_404(Pet, id=pet_id, dono=request.user)
+    return render(request, "pets/pet_detail.html", {"pet":pet})

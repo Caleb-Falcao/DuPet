@@ -1,0 +1,140 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %}{{ pet.nome }} - Detalhes{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold text-duverde">🐾 {{ pet.nome }}</h1>
+    <div class="flex gap-2">
+      <a href="{% url 'pets:pet_edit' pet.id %}" 
+         class="bg-duazul text-duverde hover:bg-green-100 px-4 py-2 rounded-lg shadow transition">
+        ✏️ Editar
+      </a>
+      <a href="{% url 'pets:pet_delete' pet.id %}" 
+         class="bg-red-500 text-white hover:bg-red-600 px-4 py-2 rounded-lg shadow transition">
+        🗑️ Excluir
+      </a>
+      <a href="{% url 'pets:pet_list' %}" 
+         class="bg-gray-200 text-gray-700 hover:bg-gray-300 px-4 py-2 rounded-lg shadow transition">
+        🔙 Voltar
+      </a>
+    </div>
+  </div>
+
+  <!-- Card com dados principais -->
+  <div class="bg-white shadow-md rounded-xl p-6 mb-8 flex flex-col md:flex-row gap-6">
+    {% if pet.foto %}
+      <img src="{{ pet.foto.url }}" alt="Foto de {{ pet.nome }}" class="w-48 h-48 object-cover rounded-lg shadow">
+    {% else %}
+      <div class="w-48 h-48 bg-gray-100 flex items-center justify-center text-gray-500 rounded-lg shadow">
+        <span>Sem foto</span>
+      </div>
+    {% endif %}
+
+    <div class="flex-1">
+      <p><strong>Espécie:</strong> {{ pet.get_especie_display }}</p>
+      <p><strong>Raça:</strong> {{ pet.raca|default:"-" }}</p>
+      <p><strong>Sexo:</strong> {{ pet.get_sexo_display }}</p>
+      <p><strong>Cor:</strong> {{ pet.cor|default:"-" }}</p>
+      <p><strong>Porte:</strong> {{ pet.get_porte_display|default:"-" }}</p>
+      <p><strong>Data de Nascimento:</strong> {{ pet.data_nascimento|date:"d/m/Y"|default:"-" }}</p>
+      <p><strong>Peso:</strong> {% if pet.peso %}{{ pet.peso }} kg{% else %}-{% endif %}</p>
+      <p><strong>Microchip:</strong> {{ pet.microchip|default:"-" }}</p>
+      <p class="mt-2"><strong>Observações:</strong> {{ pet.observacoes|default:"-" }}</p>
+    </div>
+  </div>
+
+  <!-- Vacinas -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold text-duverde mb-4">💉 Vacinas</h2>
+    {% if pet.vacinas.all %}
+      <ul class="space-y-3">
+        {% for vacina in pet.vacinas.all %}
+          <li class="bg-white p-4 rounded-lg shadow flex justify-between">
+            <div>
+              <p class="font-medium">{{ vacina.nome }}</p>
+              <p class="text-sm text-gray-500">Aplicada em: {{ vacina.data_aplicacao|date:"d/m/Y" }}</p>
+              {% if vacina.proxima_dose %}
+                <p class="text-sm text-gray-500">Próxima dose: {{ vacina.proxima_dose|date:"d/m/Y" }}</p>
+              {% endif %}
+              {% if vacina.veterinario %}
+                <p class="text-sm text-gray-500">Veterinário: {{ vacina.veterinario }}</p>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">Nenhuma vacina registrada.</p>
+    {% endif %}
+  </div>
+
+  <!-- Alimentação -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold text-duverde mb-4">🍖 Alimentação</h2>
+    {% if pet.alimentacoes.all %}
+      <ul class="space-y-3">
+        {% for alim in pet.alimentacoes.all %}
+          <li class="bg-white p-4 rounded-lg shadow flex justify-between">
+            <div>
+              <p class="font-medium">{{ alim.descricao }}</p>
+              <p class="text-sm text-gray-500">Horário: {{ alim.horario }}</p>
+              {% if alim.quantidade %}
+                <p class="text-sm text-gray-500">Quantidade: {{ alim.quantidade }}</p>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">Nenhuma alimentação registrada.</p>
+    {% endif %}
+  </div>
+
+  <!-- Consultas -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold text-duverde mb-4">🩺 Consultas</h2>
+    {% if pet.consultas.all %}
+      <ul class="space-y-3">
+        {% for consulta in pet.consultas.all %}
+          <li class="bg-white p-4 rounded-lg shadow">
+            <p class="font-medium">Data: {{ consulta.data|date:"d/m/Y H:i" }}</p>
+            <p class="text-sm text-gray-500">Motivo: {{ consulta.motivo }}</p>
+            {% if consulta.local %}
+              <p class="text-sm text-gray-500">Local: {{ consulta.local }}</p>
+            {% endif %}
+            {% if consulta.veterinario %}
+              <p class="text-sm text-gray-500">Veterinário: {{ consulta.veterinario }}</p>
+            {% endif %}
+            {% if consulta.observacoes %}
+              <p class="text-sm text-gray-500">Obs: {{ consulta.observacoes }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">Nenhuma consulta registrada.</p>
+    {% endif %}
+  </div>
+
+  <!-- Pesos -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold text-duverde mb-4">⚖️ Histórico de Peso</h2>
+    {% if pet.pesos.all %}
+      <ul class="space-y-3">
+        {% for p in pet.pesos.all %}
+          <li class="bg-white p-4 rounded-lg shadow flex justify-between">
+            <span>{{ p.data|date:"d/m/Y" }}</span>
+            <span class="font-medium">{{ p.peso }} kg</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">Nenhum registro de peso.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
