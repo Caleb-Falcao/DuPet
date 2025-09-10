@@ -23,20 +23,30 @@ class PetForm(forms.ModelForm):
             "observacoes": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
         }
 
+
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina
-        fields = ["nome", "data_aplicacao","proxima_dose", "veterinario"]
+        fields = ["nome", "data_aplicacao", "proxima_dose","veterinario"]
+        widgets = {
+            "data_aplicacao": forms.DateInput(attrs={"type": "date"}),
+            "proxima_dose": forms.DateInput(attrs={"type": "date"}),
+        }
 
 class AlimentacaoForm(forms.ModelForm):
     class Meta:
         model = Alimentacao
         fields = ["descricao", "quantidade", "horario"]
-
-class ConsultaForm(form.ModelForm):
+        widgets = {
+            "horario": forms.TimeInput(attrs={"type": "time"}),
+        }
+class ConsultaForm(forms.ModelForm):
     class Meta:
         model = Consulta
         fields = ["data", "local", "veterinario", "motivo", "observacoes"]
+        widgets = {
+            "data": forms.DateInput(attrs={"type": "date"}),
+        }
         
 class PesoForm(forms.ModelForm):
     class Meta:
