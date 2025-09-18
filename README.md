@@ -12,14 +12,8 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 - Cadastro e login de usuários
 - Cadastro de pets com foto, nome, espécie, raça, idade
 - Listagem de pets por usuário
-- Busca de clínicas veterinárias (em breve)
-- Layout moderno com Tailwind CSS
-
----
-
-## 📸 Capturas de Tela
-
-(Tire prints das páginas e salve depois na pasta `/docs`)
+- Busca de clínicas veterinárias (com API do google, caso vc tenha uma api key criar um arquivo .env GOOGLE_MAPS_API_KEY = "APIKEY GOOGLE MAPS")
+- Layout com Tailwind CSS
 
 ---
 
