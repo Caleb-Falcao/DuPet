@@ -38,3 +38,4 @@ python -m venv venv
 pip install -r .\requirements.txt
 venv\Scripts\activate
 python manage.py runserver
+no arquivo .env DJANGO_SECRET_KEY=django-insecure-==agq7as3o4$!0hewla7%#sr@q-a3+y11a)0#xf^y=8g4xis)y
