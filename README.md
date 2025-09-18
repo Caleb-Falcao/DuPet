@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# 🐾 DuPet – Gerenciador de Pets e Clínicas
+# DuPet – Gerenciador de Pets e Clínicas
 
 ![License](https://img.shields.io/badge/license-Proprietary-red)
 
