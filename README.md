@@ -39,6 +39,5 @@ pip install -r .\requirements.txt
 venv\Scripts\activate
 python manage.py runserver
 criar arquivo .env na raiz do projeto DJANGO_SECRET_KEY=django-insecure-==agq7as3o4$!0hewla7%#sr@q-a3+y11a)0#xf^y=8g4xis)y
-![Minha Foto]([https://raw.githubusercontent.com/usuario/repositorio/main/assets/minha_foto.png](https://github-production-user-asset-6210df.s3.amazonaws.com/57542268/491217096-5b855ed5-fd6f-4eb8-b22a-108c99e61f81.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250918%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250918T175218Z&X-Amz-Expires=300&X-Amz-Signature=66e5876707d0dbca4ee6a33e974926b54100ba74d31ff9448daeff3387b512b9&X-Amz-SignedHeaders=host))
 
 
