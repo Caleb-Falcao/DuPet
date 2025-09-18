@@ -39,5 +39,5 @@ pip install -r .\requirements.txt
 venv\Scripts\activate
 python manage.py runserver
 criar arquivo .env na raiz do projeto DJANGO_SECRET_KEY=django-insecure-==agq7as3o4$!0hewla7%#sr@q-a3+y11a)0#xf^y=8g4xis)y
-![Banner]([https://exemplo.com/imagem.png](https://github.com/user-attachments/assets/5b855ed5-fd6f-4eb8-b22a-108c99e61f81))
+![Logo do projeto](DuPet/pets_fotos/petit.jpg)
 
