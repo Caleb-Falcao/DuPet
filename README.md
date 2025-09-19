@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# 🐾 DuPet – Gerenciador de Pets e Clínicas
+# DuPet – Gerenciador de Pets e Clínicas
 
 ![License](https://img.shields.io/badge/license-Proprietary-red)
 
@@ -12,14 +12,8 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 - Cadastro e login de usuários
 - Cadastro de pets com foto, nome, espécie, raça, idade
 - Listagem de pets por usuário
-- Busca de clínicas veterinárias (em breve)
-- Layout moderno com Tailwind CSS
-
----
-
-## 📸 Capturas de Tela
-
-(Tire prints das páginas e salve depois na pasta `/docs`)
+- Busca de clínicas veterinárias (com API do google, caso vc tenha uma api key criar um arquivo .env GOOGLE_MAPS_API_KEY = "APIKEY GOOGLE MAPS")
+- Layout com Tailwind CSS
 
 ---
 
@@ -44,3 +38,6 @@ python -m venv venv
 pip install -r .\requirements.txt
 venv\Scripts\activate
 python manage.py runserver
+criar arquivo .env na raiz do projeto e adicionar esse trecho de codigo: DJANGO_SECRET_KEY=django-insecure-==agq7as3o4$!0hewla7%#sr@q-a3+y11a)0#xf^y=8g4xis)y
+
+
