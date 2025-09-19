@@ -1,10 +1,10 @@
 {% extends 'global/base.html' %}
-{% block title %}Excluir Pet - DuPet{% endblock %}
+{% block title %}Excluir Clínica{% endblock %}
 
 {% block content %}
 <div class="max-w-md mx-auto bg-white rounded-2xl shadow-md p-6 mt-10">
-  <h1 class="text-2xl font-bold text-duverde mb-4">🛑 Excluir Pet</h1>
-  <p class="text-gray-700 mb-6">Tem certeza que deseja excluir <strong>{{ pet.nome }}</strong>?</p>
+  <h1 class="text-2xl font-bold text-duverde mb-4">🛑 Excluir Clínica</h1>
+  <p class="text-gray-700 mb-6">Tem certeza que deseja excluir <strong>{{ clinic.nome }}</strong>?</p>
 
   <form method="POST">
     {% csrf_token %}
@@ -12,7 +12,7 @@
       <button type="submit" class="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg shadow">
          Excluir
       </button>
-      <a href="{% url 'pets:pet_list' %}" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg shadow text-center">
+      <a href="{% url 'clinics:clinic_list' %}" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg shadow text-center">
          Cancelar
       </a>
     </div>

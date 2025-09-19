@@ -32,6 +32,13 @@ class VacinaForm(forms.ModelForm):
             "data_aplicacao": forms.DateInput(attrs={"type": "date"}),
             "proxima_dose": forms.DateInput(attrs={"type": "date"}),
         }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({
+                'class': 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-duverde focus:border-duverde'
+            })
 
 class AlimentacaoForm(forms.ModelForm):
     class Meta:
@@ -40,6 +47,13 @@ class AlimentacaoForm(forms.ModelForm):
         widgets = {
             "horario": forms.TimeInput(attrs={"type": "time"}),
         }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({
+                'class': 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-duverde focus:border-duverde'
+            })
 class ConsultaForm(forms.ModelForm):
     class Meta:
         model = Consulta
@@ -47,8 +61,21 @@ class ConsultaForm(forms.ModelForm):
         widgets = {
             "data": forms.DateInput(attrs={"type": "date"}),
         }
-        
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({
+                'class': 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-duverde focus:border-duverde'
+            })
 class PesoForm(forms.ModelForm):
     class Meta:
         model = Peso
-        fields = ["peso"]    
+        fields = ["peso"]
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({
+                'class': 'w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-duverde focus:border-duverde'
+            })

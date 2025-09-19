@@ -5,8 +5,12 @@
 <div class="max-w-5xl mx-auto px-4 py-8">
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold text-duverde">🐾 Meus Pets</h1>
-    <a href="{% url 'pets:pet_create' %}" class="bg-duverde hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow transition">
-      ➕ Adicionar Pet
+    <a href="{% url 'pets:pet_create' %}" class="bg-duverde hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow transition ml-6 mr-2">
+      ➕ Adicionar Pet        
+    </a>
+    <a href="{% url 'core:home'%}" 
+       class="bg-duverde text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+      ✏️ Voltar
     </a>
   </div>
 
@@ -50,13 +54,13 @@
           <!-- Ações -->
           <div class="mt-4 flex gap-2 p-4">
             <a href="{% url 'pets:pet_detail' pet.id %}" class="flex-1 bg-duverde text-white hover:bg-green-700 text-center py-2 rounded-lg shadow-sm transition">
-              📄 Detalhes
+              Detalhes
             </a>
             <a href="{% url 'pets:pet_edit' pet.id %}" class="flex-1 bg-duazul text-duverde hover:bg-green-100 text-center py-2 rounded-lg shadow-sm transition">
-              ✏️ Editar
+              Editar
             </a>
             <a href="{% url 'pets:pet_delete' pet.id %}" class="flex-1 bg-red-500 text-white hover:bg-red-600 text-center py-2 rounded-lg shadow-sm transition">
-              🗑️ Excluir
+              Excluir
             </a>
           </div>
         </div>

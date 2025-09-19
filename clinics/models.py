@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Clinic(models.Model):
+    dono = models.ForeignKey(User, on_delete=models.CASCADE, related_name='clinics')
     nome = models.CharField(max_length=100)
     endereco = models.CharField(max_length=200)
     cidade = models.CharField(max_length=100)

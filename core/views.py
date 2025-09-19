@@ -12,5 +12,5 @@ def about(request):
 
 @login_required
 def contact(request):
-    return render(request, 'core/contact,html')
+    return render(request, 'core/contact.html')
 

@@ -9,7 +9,10 @@
   <!-- Cabeçalho -->
   <div class="flex justify-between items-center">
     <h1 class="text-3xl font-bold text-duverde">🐾 {{ pet.nome }}</h1>
-    <a href="{% url 'pets:pet_edit' pet.id %}" class="bg-duazul text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition">
+    <a href="{% url 'pets:pet_list'%}" class="bg-duverde text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+      ✏️ Voltar
+    </a>
+    <a href="{% url 'pets:pet_edit' pet.id %}" class="bg-duverde text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition">
       ✏️ Editar Pet
     </a>
   </div>

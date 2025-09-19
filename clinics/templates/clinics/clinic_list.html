@@ -25,26 +25,59 @@
   <section class="mb-6">
     <div class="flex justify-between items-center mb-2">
       <h2 class="text-xl font-semibold text-gray-800">🏥 Clínicas Parceiras DuPet</h2>
-      <a href="{% url 'clinics:clinic_add' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-        + Nova Clínica
+      <a href="{% url 'clinics:clinic_add' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition ml-3">
+        Nova Clínica
       </a>
     </div>
 
     {% if clinics %}
-      <ul class="grid md:grid-cols-2 gap-4 mt-4">
+      <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-6 mt-4">
         {% for clinic in clinics %}
-        <li class="p-4 border rounded-lg shadow bg-white hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-green-700">{{ clinic.nome }}</h3>
-          <p class="text-sm text-gray-600">{{ clinic.endereco }}</p>
-          <p class="text-sm text-gray-500">{{ clinic.cidade }} • {{ clinic.telefone }}</p>
-        </li>
+          <li class="p-4 border rounded-2xl shadow bg-white hover:shadow-lg transition flex flex-col justify-between">
+        
+          <!-- Conteúdo do card -->
+          <div>
+            <h3 class="text-xl font-bold text-duverde mb-2">{{ clinic.nome }}</h3>
+            <p class="text-sm text-gray-600 mb-1">{{ clinic.endereco }}</p>
+            <p class="text-sm text-gray-500">{{ clinic.cidade }} • {{ clinic.telefone }}</p>
+          </div>
+          
+          <!-- Ações (botões abaixo do conteúdo) -->
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="" class="flex-1 sm:flex-auto bg-duverde text-white hover:bg-green-700 text-center py-2 rounded-lg shadow-sm transition">
+              Detalhes
+            </a>
+
+            {% if clinic.dono == user %}
+              <a href="{% url 'clinics:clinic_edit' clinic.id %}" class="flex-1 sm:flex-auto bg-duazul text-duverde hover:bg-blue-100 text-center py-2 rounded-lg shadow-sm transition">
+                Editar
+              </a>
+
+              <form method="POST" action="{% url 'clinics:clinic_delete' clinic.id %}" class="flex-1 sm:flex-auto">
+                {% csrf_token %}
+                <button type="submit" class="w-full bg-red-500 text-white hover:bg-red-600 py-2 rounded-lg shadow-sm transition">
+                  Excluir
+                </button>
+              </form>
+            {% endif %}
+          </div>
+
+          </li>
         {% endfor %}
       </ul>
+
     {% else %}
       <p class="text-gray-500 mt-2">Nenhuma clínica cadastrada ainda.</p>
     {% endif %}
   </section>
 </div>
+<div class="flex justify-end mr-4">
+  <a href="{% url 'core:home'%}" 
+        class="bg-duverde text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+        Voltar
+      </a>
+</div>
+  
 {% endblock %}
 {% block scripts %}
 <!-- Google Maps API + Script -->
