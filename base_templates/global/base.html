@@ -13,9 +13,9 @@
       theme: {
         extend: {
           colors: {
-            duverde: '#16A34A',   // Verde principal
-            duazul: '#E0F2F1',    // Terceira cor suave (verde-água)
-            dufundo: '#F1F5F9'    // Fundo geral
+            duverde: '#16A34A',
+            duazul: '#E0F2F1',
+            dufundo: '#F1F5F9'
           }
         }
       }
@@ -29,66 +29,59 @@
 
 <header class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    
+
     <!-- Logo -->
     <a href="/" class="text-3xl font-extrabold text-duverde tracking-tight">DuPet</a>
 
     <!-- Menu Desktop -->
     <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+
       <a href="/" class="text-gray-700 hover:text-duverde transition-colors">Início</a>
       <a href="/pets/" class="text-gray-700 hover:text-duverde transition-colors">Pets</a>
       <a href="/clinics/" class="text-gray-700 hover:text-duverde transition-colors">Clínicas</a>
 
       {% if user.is_authenticated %}
-        <!-- Avatar + Nome + Dropdown -->
-        <div class="relative inline-block group">
-          <button class="flex items-center space-x-2 focus:outline-none">
-            {% if user.profile_image %}
-              <img src="{{ user.profile_image.url }}" alt="Foto de {{ user.username }}"
-                   class="w-8 h-8 rounded-full border border-gray-300">
-            {% else %}
-              <div class="w-8 h-8 rounded-full bg-duverde text-white flex items-center justify-center">
-                {{ user.username|first|upper }}
-              </div>
-            {% endif %}
+      <!-- Botão único do usuário com dropdown -->
+      <div class="relative inline-block">
+        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none bg-duverde text-white px-3 py-1 rounded-lg hover:bg-green-700 transition">
+          {% if user.profile_image %}
+            <img src="{{ user.profile_image.url }}" alt="Foto de {{ user.username }}" class="w-8 h-8 rounded-full border border-gray-300">
+          {% else %}
+            <div class="w-8 h-8 rounded-full bg-white text-duverde flex items-center justify-center font-bold">
+              {{ user.username|first|upper }}
+            </div>
+          {% endif %}
 
-            <span class="text-gray-700">{{ user.username }}</span>
+          <span class="text-white">{{ user.username }}</span>
 
-            <!-- Badge tipo de usuário -->
-            <span class="ml-1 px-2 py-0.5 rounded-full text-xs 
-              {% if user.role == 'tutor' %} bg-green-100 text-green-700 
-              {% elif user.role == 'clinica' %} bg-blue-100 text-blue-700 
-              {% else %} bg-red-100 text-red-700 {% endif %}">
-              {{ user.get_role_display }}
-            </span>
+          <!-- Badge tipo de usuário -->
+          <span class="ml-1 px-2 py-0.5 rounded-full text-xs 
+            {% if user.role == 'tutor' %} bg-green-100 text-green-700 
+            {% elif user.role == 'clinica' %} bg-blue-100 text-blue-700 
+            {% else %} bg-red-100 text-red-700 {% endif %}">
+            {{ user.get_role_display }}
+          </span>
 
-            <!-- Ícone dropdown -->
-            <svg class="w-4 h-4 text-gray-500 group-hover:rotate-180 transition-transform"
-                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
+          <!-- Ícone dropdown -->
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
 
-          <!-- Dropdown corrigido -->
-          <div class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg 
-                      opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                      group-focus-within:opacity-100 group-focus-within:visible 
-                      transition-opacity duration-150">
-            <a href="/profile/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
-            <a href="/settings/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
-            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-100">Sair</a>
-          </div>
+        <!-- Dropdown -->
+        <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg hidden flex-col">
+          <a href="/profile/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+          <a href="/settings/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Configurações</a>
+          <a href="{% url 'logout' %}" class="block px-4 py-2 text-red-500 hover:bg-red-100">Sair</a>
         </div>
+      </div>
       {% else %}
         <a href="{% url 'login' %}" class="bg-duverde text-white px-3 py-1 rounded-lg hover:bg-green-700 transition">Login</a>
       {% endif %}
     </nav>
 
     <!-- Botão Menu Mobile -->
-    <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
-      ☰
-    </button>
+    <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">☰</button>
   </div>
 
   <!-- Menu Mobile -->
@@ -96,7 +89,6 @@
     <a href="/" class="block text-gray-700 hover:text-duverde">Início</a>
     <a href="/pets/" class="block text-gray-700 hover:text-duverde">Pets</a>
     <a href="/clinics/" class="block text-gray-700 hover:text-duverde">Clínicas</a>
-
     {% if user.is_authenticated %}
       <a href="/profile/" class="block text-gray-700 hover:text-duverde">Meu Perfil</a>
       <a href="/settings/" class="block text-gray-700 hover:text-duverde">Configurações</a>
@@ -108,23 +100,38 @@
 </header>
 
 <script>
-  // Script para abrir/fechar o menu mobile
+  // Menu Mobile
   document.getElementById("menu-toggle").addEventListener("click", function() {
     document.getElementById("mobile-menu").classList.toggle("hidden");
   });
+
+  // Dropdown do usuário
+  const userButton = document.getElementById("user-menu-button");
+  const userDropdown = document.getElementById("user-dropdown");
+
+  if(userButton){
+    userButton.addEventListener("click", function() {
+      userDropdown.classList.toggle("hidden");
+    });
+
+    window.addEventListener("click", function(e) {
+      if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.classList.add("hidden");
+      }
+    });
+  }
 </script>
 
+<!-- 📄 CONTEÚDO PRINCIPAL -->
+<main class="flex-1 max-w-7xl mx-auto px-4 py-8">
+  {% block content %}{% endblock %}
+</main>
 
-  <!-- 📄 CONTEÚDO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl mx-auto px-4 py-8">
-    {% block content %}{% endblock %}
-  </main>
+<!-- 📦 RODAPÉ -->
+<footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+  &copy; {{ now|date:"Y" }} DuPet. Desenvolvido por Caleb Falcão.
+</footer>
 
-  <!-- 📦 RODAPÉ -->
-  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
-    &copy; {{ now|date:"Y" }} DuPet. Desenvolvido por Caleb Falcão.
-  </footer>
-
-  {% block scripts %}{% endblock %}
+{% block scripts %}{% endblock %}
 </body>
 </html>
