@@ -1,4 +1,4 @@
-# 🎨 Estilo e UI
+# Estilo e UI
 
 ## Framework usado
 - Tailwind CSS (via CDN)
@@ -9,5 +9,5 @@
 - Em breve: dashboard e página de perfil
 
 ## Reutilização
-- Criar `base.html` para centralizar estilos
+- `base.html` para centralizar estilos
 - Inserir navbar e rodapé padrão

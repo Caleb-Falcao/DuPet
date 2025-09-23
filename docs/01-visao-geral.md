@@ -1,4 +1,4 @@
-# 📘 Visão Geral do Projeto DuPet
+# Visão Geral do Projeto DuPet
 
 DuPet é um sistema web desenvolvido em Django com o objetivo de facilitar o gerenciamento de pets e a busca por clínicas veterinárias.
 

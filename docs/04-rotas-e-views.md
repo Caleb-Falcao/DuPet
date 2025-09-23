@@ -9,14 +9,18 @@
 ## Roteamento por app
 
 ### `users/urls.py`
-- `/users/login/` → login_view
-- `/users/signup/` → signup_view
-- `/users/logout/` → logout_view
+- `/users/login/` → login
+- `/users/signup/` → signup
+- `/users/logout/` → logout
 
 ### `pets/urls.py`
-- `/pets/` → listagem
-- `/pets/novo/` → criação
-- `/pets/<id>/editar/` → edição (em breve)
+- `/pets/` → listagem de pets
+- `/pets/novo/` → criação de pets
+- `/pets/<id>/editar/` → edição de clinicas
 
 ### `clinics/urls.py`
-- `/clinics/` → listagem de clínicas (em desenvolvimento)
+- `/clinics/` → listagem de clínica
+- `/nova/` → adicionar nova clínica
+- `proximas/` → listagem de clínicas proximas 
+- `<int:pk>/editar/` → edição de clínica
+- `<int:pk>/excluir/` → exclusão de clínica

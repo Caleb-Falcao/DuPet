@@ -1,11 +1,11 @@
-# 🧱 Arquitetura do Projeto
+# Arquitetura do Projeto
 
 ## Estrutura de apps
 
 - **users**: autenticação (login, cadastro, logout)
 - **pets**: modelos, views e formulários para pets
 - **clinics**: busca e visualização de clínicas
-
+- **core**: centraliza a os componentes home, about e contact
 ## Stack utilizada
 
 - Django 5.2
