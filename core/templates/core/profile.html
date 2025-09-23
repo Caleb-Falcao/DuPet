@@ -1,0 +1,54 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}Meu Perfil{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Card do Perfil -->
+  <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-6">
+    <div class="flex items-center space-x-6">
+      <!-- Foto -->
+      {% if user.profile_image %}
+        <img src="{{ user.profile_image.url }}" class="w-20 h-20 rounded-full border border-slate-200">
+      {% else %}
+        <div class="w-20 h-20 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold">
+          {{ user.username|first|upper }}
+        </div>
+      {% endif %}
+
+      <!-- Dados -->
+      <div>
+        <h1 class="text-2xl font-semibold text-gray-800">{{ user.username }}</h1>
+        <p class="text-slate-600 text-sm">{{ user.email }}</p>
+
+        <!-- Badge do tipo -->
+        <span class="mt-2 inline-block px-3 py-1 text-xs rounded-full 
+          {% if user.role == 'tutor' %} bg-green-100 text-green-700 
+          {% elif user.role == 'clinica' %} bg-blue-100 text-blue-700 
+          {% else %} bg-red-100 text-red-700 {% endif %}">
+          {{ user.get_role_display }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Infos extras -->
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+      <div class="bg-slate-100 p-4 rounded-xl">
+        <p class="text-slate-600">Data de Criação</p>
+        <p class="font-medium text-gray-800">{{ user.date_joined|date:"d/m/Y" }}</p>
+      </div>
+      <div class="bg-slate-100 p-4 rounded-xl">
+        <p class="text-slate-600">Último Login</p>
+        <p class="font-medium text-gray-800">{{ user.last_login|date:"d/m/Y H:i" }}</p>
+      </div>
+    </div>
+
+    <!-- Botão editar -->
+    <div class="mt-6">
+      <a href="{% url 'core:settings' %}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition">
+        Editar Perfil
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

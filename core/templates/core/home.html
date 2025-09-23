@@ -14,10 +14,15 @@
       No DuPet, você encontra clínicas, gerencia seus pets e garante que eles recebam o melhor cuidado possível.
     </p>
     <div class="mt-6 flex gap-4">
-      <a href="{% url 'pets:pet_list' %}" class="bg-duverde hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow">
+      <a href="{% url 'pets:pet_list' %}" 
+        class="bg-duverde text-white px-6 py-3 rounded-lg shadow 
+                transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-green-600">
         Meus Pets
       </a>
-      <a href="{% url 'clinics:clinic_list' %}" class="bg-duazul hover:bg-green-200 text-duverde px-6 py-3 rounded-lg shadow">
+      
+      <a href="{% url 'clinics:clinic_list' %}" 
+        class="bg-duazul text-duverde px-6 py-3 rounded-lg shadow 
+                transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-duverde hover:text-white">
         Encontrar Clínica
       </a>
     </div>
@@ -31,22 +36,26 @@
 <!-- Seção de Recursos -->
 <section class="mt-12 grid gap-8 md:grid-cols-3">
   <!-- Card -->
-  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200 
+              transform transition duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-duverde">
     <img src="{% static 'icons/cad_pet.png' %}" class="w-16 h-16 mx-auto mb-4" alt="">
     <h3 class="text-lg font-semibold text-duverde">Cadastro de Pets</h3>
     <p class="text-gray-500 mt-2">Mantenha informações atualizadas sobre saúde, vacinas e mais.</p>
   </div>
 
-  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200 
+              transform transition duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-duverde">
     <img src="{% static 'icons/clinic.png' %}" class="w-16 h-16 mx-auto mb-4" alt="">
     <h3 class="text-lg font-semibold text-duverde">Busca de Clínicas</h3>
     <p class="text-gray-500 mt-2">Encontre veterinários próximos com base na sua localização.</p>
   </div>
 
-  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+  <div class="bg-white rounded-xl shadow p-6 text-center border border-gray-200 
+              transform transition duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-duverde">
     <img src="{% static 'icons/pet_care.png' %}" class="w-16 h-16 mx-auto mb-4" alt="">
     <h3 class="text-lg font-semibold text-duverde">Cuidados Personalizados</h3>
     <p class="text-gray-500 mt-2">Receba dicas e alertas para manter seu pet saudável e feliz.</p>
   </div>
 </section>
+
 {% endblock %}

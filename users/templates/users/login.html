@@ -8,33 +8,30 @@
     <meta charset="UTF-8">
     <title>Login - DuPet</title>
 </head>
-<body class="bg-pink-50 font-sans">
+<body class="bg-slate-100 font-sans">
   <div class="flex h-screen">
     <!-- Lado esquerdo com imagem -->
-    <div class="w-1/2 bg-pink-100 flex items-center justify-center">
+    <div class="w-1/2 bg-green-50 flex items-center justify-center">
       <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Illustration" class="w-3/4 max-w-md">
     </div>
 
     <!-- Lado direito com formulário -->
     <div class="w-1/2 flex items-center justify-center bg-white">
-      <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+      <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg border border-slate-200">
 
         <h1 class="text-2xl font-bold mb-2 text-gray-800">Falta pouco para cuidar do seu pet! 🐶</h1>
-        <p class="mb-6 text-gray-600">Como deseja continuar?</p>
+        <p class="mb-6 text-slate-600">Como deseja continuar?</p>
 
-        <!-- Botões Sociais (simulados) -->
+        <!-- Botões Sociais -->
         <div class="space-y-3 mb-6">
-          <button class="w-full flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12.1c0-.6 0-1.1-.1-1.6H12v3h5.6c-.3 1.4-1.2 2.5-2.4 3.2v2.6h3.9c2.2-2 3.4-5 3.4-8.2z"/>
-              <path d="M12 22c2.4 0 4.5-.8 6.1-2.2l-3-2.6c-.8.5-1.9.8-3.1.8-2.4 0-4.4-1.6-5.1-3.8H3.7v2.4C5.2 19.9 8.3 22 12 22z"/>
-              <path d="M6.9 13.2c-.2-.6-.4-1.3-.4-2s.1-1.4.4-2V6.8H3.7C3.3 7.7 3 8.8 3 10s.3 2.3.7 3.2l3.2-.1z"/>
-              <path d="M12 4.4c1.3 0 2.4.4 3.3 1.2l2.4-2.4C16.4 1.8 14.3 1 12 1 8.3 1 5.2 3.1 3.7 6l3.2 2.4C7.6 6 9.6 4.4 12 4.4z"/>
+          <button class="w-full flex items-center justify-center bg-[#1877F2] text-white px-4 py-2 rounded-md hover:bg-[#145DBF] transition">
+            <svg class="w-6 h-6 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
             </svg>
             Continuar com Facebook
           </button>
 
-          <button class="w-full flex items-center justify-center border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition">
+          <button class="w-full flex items-center justify-center border border-slate-300 px-4 py-2 rounded-md hover:bg-slate-100 transition">
             <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" class="w-5 h-5 mr-2">
             Continuar com Google
           </button>
@@ -49,13 +46,20 @@
             {% endfor %}
           {% endif %}
 
-          <input type="text" name="username" placeholder="Usuário" required class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400">
-          <input type="password" name="password" placeholder="Senha" required class="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400">
-          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600 transition">Entrar</button>
+          <input type="text" name="username" placeholder="Usuário" required 
+                 class="w-full border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600">
+          <input type="password" name="password" placeholder="Senha" required 
+                 class="w-full border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600">
+          
+          <button type="submit" 
+                  class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition">
+            Entrar
+          </button>
         </form>
-
-        <p class="mt-4 text-sm text-center">Ainda não tem conta? <a href="{% url 'signup' %}" class="text-pink-500 hover:underline">Cadastre-se</a></p>
-
+        <p class="mt-4 text-sm text-center text-slate-600">
+          Ainda não tem conta? 
+          <a href="{% url 'signup' %}" class="text-green-600 hover:underline">Cadastre-se</a>
+        </p>
       </div>
     </div>
   </div>
