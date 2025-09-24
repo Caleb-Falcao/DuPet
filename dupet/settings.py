@@ -139,7 +139,7 @@ LOGIN_URL = '/users/login/'
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY', '')
 
 STATICFILES_DIRS = [
-    BASE_DIR / "dupet" / "static",
+    BASE_DIR / "static",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
