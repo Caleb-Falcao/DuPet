@@ -38,7 +38,6 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r .\requirements.txt
 python manage.py migrate
-criar arquivo .env na raiz do projeto e adicionar esse trecho de codigo: DJANGO_SECRET_KEY=django-insecure-==agq7as3o4$!0hewla7%#sr@q-a3+y11a)0#xf^y=8g4xis)y
 python manage.py runserver
 
 
