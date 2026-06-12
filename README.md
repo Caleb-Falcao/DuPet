@@ -7,7 +7,7 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - Cadastro e login de usuários
 - Cadastro de pets com foto, nome, espécie, raça, idade
@@ -17,7 +17,7 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 
 ---
 
-## 🧰 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - Python 3.13
 - Django 5.2
@@ -26,8 +26,9 @@ DuPet é um aplicativo web feito com Django, que permite aos tutores cadastrarem
 - HTML5 e Templates Django
 
 ---
-
-## 🛠️ Como rodar localmente
+## Deploy
+https://dupet.onrender.com/
+## Como rodar localmente
 
 1. Clone o repositório:
 
